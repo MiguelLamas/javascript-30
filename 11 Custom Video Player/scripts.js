@@ -14,16 +14,25 @@ function togglePlay() {
     if (video.paused) {
         video.play();
     } else {
-        video.paused();
+        video.pause();
     }
+};
+
+function updateButton() {
+    const icon = this.paused ? '►' : '❚ ❚';
+    toggle.textContent = icon;
 };
 
 
 
-/*Hook Up the event Listeners */
+/* Hook Up the event Listeners */
+
+video.addEventListener('click', togglePlay);
+video.addEventListener('play', updateButton);
+video.addEventListener('pause', updateButton);
 
 
-
+toggle.addEventListener('click', togglePlay);
 
 
 
