@@ -23,7 +23,15 @@ function updateButton() {
     toggle.textContent = icon;
 };
 
+function skip() {
+    console.log(this.dataset.skip);
+    video.currentTime += parseFloat(this.dataset.skip); // parseFloat converts string into a true number
 
+}
+
+function handleRangeUpdate() {
+    console.log(this.value);
+}
 
 /* Hook Up the event Listeners */
 
@@ -33,8 +41,8 @@ video.addEventListener('pause', updateButton);
 
 
 toggle.addEventListener('click', togglePlay);
-
-
+skipButtons.forEach(button => button.addEventListener('click', skip));
+ranges.forEach(range => range.addEventListener('click', handleRangeUpdate));
 
 
 
