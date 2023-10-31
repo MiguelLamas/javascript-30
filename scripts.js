@@ -7,13 +7,13 @@ const progressBar = player.querySelector('.progress__filled');
 const toggle = player.querySelector('.toggle');
 const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
-
+const fullscreen = player.querySelector('.fullscreen');
 
 /* Build our Functions */
 function togglePlay() {
     if (video.paused) {
         video.play();
-    } else {
+    } else { 
         video.pause();
     }
 };
@@ -61,7 +61,10 @@ progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
 progress.addEventListener('mousemove', () => mousedown = true);
 progress.addEventListener('mousemove', () => mousedown = false);
 
-
+//fullscreen button
+fullscreen.addEventListener('click', () => {
+    video.requestFullscreen();
+})
 
 
 
