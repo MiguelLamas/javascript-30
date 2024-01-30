@@ -50,14 +50,18 @@
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
 function strip(bandName) {
-  return bandName.replace(/^(a |the |an )/ig, '').trim();
+  return bandName.replace(/^(a |the |an )/ig, '').trim(); // trim() just incase we have any spaces after replacing articles
 }
 
-const sortedBands = bands.sort((a,b) => {
-   return strip(a) > strip(b) ? 1 : -1;
-    }); 
+const sortedBands = bands.sort((a, b) => {
+  return strip(a) > strip(b) ? 1 : -1;
+})
 
 console.log(sortedBands);
+
+document.querySelector('#bands').innerHTML = sortedBands.map(band => `<li>${band}</li>`).join('');
+// join('') as when adding to innerHTML, the DOM would call sortedBands.toString() by default
+// therefore adding a comma inbetween each string in the array and making it appear between each <li>
 
 </script>
 
