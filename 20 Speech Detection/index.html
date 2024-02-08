@@ -15,25 +15,28 @@
       const recognition = new SpeechRecognition();
       recognition.interimResults = true;
 
-      let p = document.createElement("p");
-      const words = document.querySelector(".words");
-      words.appendChild(p);
+      let p = document.createElement("p"); // create paragraphs
+      const words = document.querySelector(".words"); // select div with words Class
+      words.appendChild(p); // add new paragraphs to this bit of HTML
 
+      // instead of clicks, mouseover, etc we'll add recognition variable to event listener
       recognition.addEventListener("result", (e) => {
         const transcript = Array.from(e.results)
           .map((result) => result[0])
           .map((result) => result.transcript)
           .join("");
 
+        // want transcript to appear in the DOM
         p.textContent = transcript;
-        if(e.results[0].isFinal) {
-          p = document.createElement('p');
+        // create new paragraphs to stop new paragraph overwriting old one
+        if (e.results[0].isFinal) {
+          p = document.createElement("p");
           words.appendChild(p);
         }
-
         console.log(transcript);
       });
 
+      //when the speech recognition stops, end EventListener and run recognition.start() again
       recognition.addEventListener("end", recognition.start);
 
       recognition.start();
