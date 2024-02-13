@@ -9,9 +9,9 @@
     <div class="words" contenteditable></div>
 
     <script>
-      window.SpeechRecognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
 
+      window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      
       const recognition = new SpeechRecognition();
       recognition.interimResults = true;
 
@@ -40,7 +40,12 @@
       recognition.addEventListener("end", recognition.start);
 
       recognition.start();
-    </script>
+
+
+</script>
+
+
+    
 
     <style>
       html {
