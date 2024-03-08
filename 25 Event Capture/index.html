@@ -40,21 +40,31 @@
     background: coral;
   }
 </style>
-
 <button></button>
 <script>
+//grab all divs/nested divs
 const divs = document.querySelectorAll('div');
+const button = document.querySelector('button');
 
 function logText(e) {
-console.log(this.classList.value)
-e.stopPropagation(); //stop bubbling!
-}
+  console.log(this.classList.value);
+  // e.stopPropagation(); //stop bubbling this event up!
 
+};
+
+//we are going to pass a third arguement to event listener - an options object
 divs.forEach(div => div.addEventListener('click', logText, {
-    capture: false,
-    once: true 
+  capture: false, //runs function on the way down rather than way up
+  once: true //once will run once on click then unbide itself much like removeEventListener would
 }));
+ 
+ button.addEventListener('click', () => {
+  console.log('Click!!');
+ }, {
+  once: true
+ }); 
 
 </script>
+
 </body>
 </html>
