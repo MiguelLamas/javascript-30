@@ -43,30 +43,28 @@
 
       slider.addEventListener("mousedown", (e) => {
         isDown = true;
-        slider.classList.add('active');
+        slider.classList.add("active");
         startX = e.pageX - slider.offsetLeft;
         scrollLeft = slider.scrollLeft;
-        
       });
 
       slider.addEventListener("mouseleave", () => {
-        let isDown = false;
-        slider.classList.remove('active');
+        isDown = false;
+        slider.classList.remove("active");
       });
 
       slider.addEventListener("mouseup", () => {
-        let isDown = false;
-        slider.classList.remove('active');
+        isDown = false;
+        slider.classList.remove("active");
       });
 
       slider.addEventListener("mousemove", (e) => {
-        if(!isDown) return; //stop the function from running;
+        if (!isDown) return; //stop the function from running;
         e.preventDefault(); //stop selecting of any text in browser
         const x = e.pageX - slider.offsetLeft; //recalculates each time we move mouse;
         const walk = (x - startX) * 3;
         slider.scrollLeft = scrollLeft - walk;
       });
-
     </script>
   </body>
 </html>
